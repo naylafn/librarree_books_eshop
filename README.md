@@ -22,6 +22,14 @@ Untuk konfigurasi routing, saya membuat file URL untuk aplikasi main dan menamba
 ## Gambar request-response cycle Django:
 ![request-response cylce](https://github.com/user-attachments/assets/cbf9a645-e94a-43c0-b0d4-5e207085ccb3)
 
+- urls.py bertindak sebagai manajer yang mengontrol rute client request ke fungis view yang spesifik.
+
+- models.py menyediakan interface untuk views.py berinteraksi dengan database.
+  
+- views.py mengambil data lewat perantara model and mengirimnya ke template untuk rendering.
+
+- HTML template merupakan response akhir atau tampilan yang akan dikirim kembali lewat view ke client.
+
 ## Fungsi git dalam pengembangan perangkat lunak:
 
 Git berperan sebagai version control, yaitu sistem yang mencatat serta menyimpan semua perubahan dan modifikasi pada sebuah file. 
