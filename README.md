@@ -41,4 +41,4 @@ Selain karena menggunakan Bahasa python yang sudah pernah dipelajari dan kita su
 
 ## Mengapa model pada Django disebut sebagai ORM?
 
-Object-relational mapping karena model tersebut merepresentasikan objek dari data yang disimpan dalam basis data relational.
+Disebut object-relational-mapping (ORM) karena model tersebut merepresentasikan objek dari data yang disimpan dalam basis data relational.
