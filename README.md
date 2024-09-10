@@ -20,8 +20,7 @@ Untuk konfigurasi routing, saya membuat file URL untuk aplikasi main dan menamba
 - Setelah semuanya siap,saya bisa menjalankan server Django dengan perintah python "manage.py runserver"
 
 ## Gambar request-response cycle Django:
-![request-response cylce](https://github.com/user-attachments/assets/b5d906f9-57f2-4c0a-85c6-6a9d3e84e6d6)
-
+![request-response cylce](https://github.com/user-attachments/assets/cbf9a645-e94a-43c0-b0d4-5e207085ccb3)
 
 ## Fungsi git dalam pengembangan perangkat lunak:
 
