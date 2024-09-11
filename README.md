@@ -20,7 +20,8 @@ Untuk konfigurasi routing, saya membuat file URL untuk aplikasi main dan menamba
 - Setelah semuanya siap,saya bisa menjalankan server Django dengan perintah python "manage.py runserver"
 
 ## Gambar request-response cycle Django:
-![request-response cylce](https://github.com/user-attachments/assets/cbf9a645-e94a-43c0-b0d4-5e207085ccb3)
+
+![request-response cycle 2](https://github.com/user-attachments/assets/d03dc27b-534b-4b67-9120-80c3729f02d0)
 
 - urls.py bertindak sebagai manajer yang mengontrol rute client request ke fungis view yang spesifik.
 
@@ -33,7 +34,7 @@ Untuk konfigurasi routing, saya membuat file URL untuk aplikasi main dan menamba
 ## Fungsi git dalam pengembangan perangkat lunak:
 
 Git berperan sebagai version control, yaitu sistem yang mencatat serta menyimpan semua perubahan dan modifikasi pada sebuah file. 
-Fungsi utamanya dalam pengembangan perangkat lunak adalah untuk menyimpan catatan modifikasi, memberi akses histori, dan memungkinkan kita untuk mengembalikan file ke kondisi atau versi sebelum-sebelumnya.
+Fungsi utamanya dalam pengembangan perangkat lunak adalah untuk menyimpan catatan modifikasi, memberi akses histori, dan memungkinkan kita untuk mengembalikan file ke kondisi atau versi sebelum-sebelumnya. Dengan git, kita juga mendapat kemudahan berkolaborasi dengan pengembang lain karena adanya fitur branching dan merging.
 
 ## Mengapa Django menjadi framework yang pertama dipelajari dalam pengembangan perangkat lunak?
 
@@ -41,4 +42,4 @@ Selain karena menggunakan Bahasa python yang sudah pernah dipelajari dan kita su
 
 ## Mengapa model pada Django disebut sebagai ORM?
 
-Disebut object-relational-mapping (ORM) karena model tersebut merepresentasikan objek dari data yang disimpan dalam basis data relational.
+Disebut object-relational-mapping (ORM) karena model tersebut merepresentasikan objek dari data yang disimpan dalam basis data relational. ORM memungkinkan untuk berinteraksi dengan database menggunakan objek python tanpa harus menulis kode SQL secara manual.
