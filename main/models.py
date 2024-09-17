@@ -1,9 +1,10 @@
 from django.db import models
-
+import uuid
 # Create your models here.
 
-class MoodEntry(models.Model):
+class Book(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     price = models.IntegerField()
-    description = models.TextField()
-    image = models.ImageField()
+    author = models.CharField(max_length=50, default="")
+    image = models.ImageField(upload_to='images/', default='images/default.jpg')
