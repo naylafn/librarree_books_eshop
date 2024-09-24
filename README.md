@@ -1,6 +1,41 @@
 ### Nayla Farah Nida
 ### 2306213426
 
+# tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
+
+## Perbedaan antara HttpResponseRedirect dan redirect
+
+```HttpResponseRedirect()``` hanya dapat mengambil argumen berupa URL, sedangkan ```redirect``` dapat menerima argumen berupa model, view, atau URL. '''Redirect()''' lebih fleksibel dalam hal apa yang dapat dialihkan karena dapat menerima argumen yang lebih beragam. 
+
+## Cara kerja penghubungan model Product dengan User:
+
+Django memiliki model pengguna bawaan yang disebut User, yang dapat diimpor dari django.contrib.auth.models. Model ini mewakili pengguna yang terdaftar di sistem.
+Relasi antara model Product dan User dibuat dengan menambahkan ForeignKey di model Product, yang menghubungkan setiap entri produk ke satu pengguna.
+
+```user = models.ForeignKey(User, on_delete=models.CASCADE)```
+
+```on_delete=models.CASCADE```: Parameter ini menentukan apa yang akan terjadi jika pengguna dihapus. Dengan CASCADE, jika pengguna dihapus, semua produk yang terkait dengan pengguna tersebut juga akan dihapus secara otomatis.
+
+*Cara Kerja di Database*
+Setiap produk akan memiliki kolom user_id (secara default) yang akan menyimpan ID dari pengguna yang terkait dengan produk tersebut. Ini akan berfungsi sebagai Foreign Key di level database. Dengan hubungan ini, kita bisa mengakses peoduk berdasarkan pengguna
+```
+# Mendapatkan user dengan id
+user = User.objects.get(id=2)
+# Mendapatkan produk yang dimiliki user
+user_products = Product.objects.filter(user=user)
+# Menampilkan semua produk yang dimiliki user
+for product in user_products:
+    print(product.name)
+```
+
+## Perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? dan bagaimana Django mengimplementasikan kedua konsep tersebut:
+
+```authentication```adalah proses memverifikasi identitas user, sedangkan ```authorization``` adalah proses memverifikasi apa saja yang dapat diakses oleh user tersebut.
+Contoh authentication: Saat login,  user memasukkan username dan password. Kemudian sistem membandingkan informasi yang diberikan user dengan data yang tersimpan di database.
+Contoh authorization: Setelah login, Django menentukan apa saja yang bisa dilakukan oleh user tersebut. Misal, hanya admin yang dapat menambah atau menghapus produk.
+
+## Cara Django mengingat pengguna yang telah login, kegunaan lain dari cookies, dan apakah semua cookies aman digunakan?:
+
 
 # Tugas 3: Implementasi Form dan Data Delivery pada Django
 
