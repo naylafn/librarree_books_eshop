@@ -45,12 +45,19 @@ Pada tigas ini, kita menggunakan cookies untuk mengingat iformasi user. Selain i
 ## Cara implementasi tugas:
 
 - Membuat fungsi login, register, dan logout di ```views.py```. Kemudian import dan daftarkan di urlpatterns urls.py.
+
 - Merestriksi ```main.html``` dengan decorator ```@login_required``` sehingga user berada di login form (login.html) dahulu. Opsi register ditunjukkan di login form, sedangkan opsi logout berupa tombol di ```main.html```.
+  
 - Menghubungkan model dengan user, dengan cara menambahkan model user:
+  
 ```user = models.ForeignKey(User, on_delete=models.CASCADE)```
+
 Supaya main page hanya menampilkan produk yang dimiliki user, ubah fungsi ```show_main``` dari:
+
 ```book_entries = Book.objects.all()```
+
 menjadi:
+
 ```book_entries = Book.objects.filter(user=request.user)```
 
 
