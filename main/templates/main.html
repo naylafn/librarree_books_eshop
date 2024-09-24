@@ -219,6 +219,10 @@
       </div>
 
       {% endfor %} {% endif %}
+      <a href="{% url 'main:logout' %}">
+        <button>Logout</button>
+      </a>
+      <h5>Sesi terakhir login: {{ last_login }}</h5>
     </main>
     <footer>
       <a href="https://lordicon.com/">Icons by Lordicon.com</a>
