@@ -33,7 +33,9 @@ for product in user_products:
 ## Perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? dan bagaimana Django mengimplementasikan kedua konsep tersebut:
 
 ```authentication```adalah proses memverifikasi identitas user, sedangkan ```authorization``` adalah proses memverifikasi apa saja yang dapat diakses oleh user tersebut.
+
 Contoh authentication: Saat login,  user memasukkan username dan password. Kemudian sistem membandingkan informasi yang diberikan user dengan data yang tersimpan di database.
+
 Contoh authorization: Setelah login, Django menentukan apa saja yang bisa dilakukan oleh user tersebut. Misal, hanya admin yang dapat menambah atau menghapus produk.
 
 ## Cara Django mengingat pengguna yang telah login, kegunaan lain dari cookies, dan apakah semua cookies aman digunakan?:
