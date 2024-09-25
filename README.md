@@ -21,8 +21,10 @@ Setiap produk akan memiliki kolom user_id (secara default) yang akan menyimpan I
 ```
 # Mendapatkan user dengan id
 user = User.objects.get(id=2)
+
 # Mendapatkan produk yang dimiliki user
 user_products = Product.objects.filter(user=user)
+
 # Menampilkan semua produk yang dimiliki user
 for product in user_products:
     print(product.name)
@@ -35,6 +37,25 @@ Contoh authentication: Saat login,  user memasukkan username dan password. Kemud
 Contoh authorization: Setelah login, Django menentukan apa saja yang bisa dilakukan oleh user tersebut. Misal, hanya admin yang dapat menambah atau menghapus produk.
 
 ## Cara Django mengingat pengguna yang telah login, kegunaan lain dari cookies, dan apakah semua cookies aman digunakan?:
+
+Django mengingat pengguna yang telah login menggunakan *session*. Setelah pengguna berhasil login, Django membuat session untuk user tersebut dan menyimpannya di database (atau media penyimpanan lain, seperti cookies atau cache), sehingga user tidak perlu login ulang selama sesi masih berlaku.
+
+Pada tigas ini, kita menggunakan cookies untuk mengingat iformasi user. Selain itu, cookies dapat berguna untuk menyimpan preferensi user, melacak aktivitas user, menyimpan data keranjang belanja, dan mencegah Serangan CSRF (Cross-Site Request Forgery) dengan menyimpan crsf_token di cookies. Namun, tidak semua cookies aman, terutama jika tidak dienkripsi atau jika digunakan oleh pihak ketiga untuk pelacakan tanpa sepengetahuan pengguna. 
+
+## Cara implementasi tugas:
+
+- Membuat fungsi login, register, dan logout di ```views.py```. Kemudian import dan daftarkan di urlpatterns urls.py.
+
+- Merestriksi ```main.html``` dengan decorator ```@login_required``` sehingga user berada di login form (login.html) dahulu. Opsi register ditunjukkan di login form, sedangkan opsi logout berupa tombol di ```main.html```.
+  
+- Menghubungkan model dengan user, dengan cara menambahkan model user:
+```user = models.ForeignKey(User, on_delete=models.CASCADE)```
+
+Supaya main page hanya menampilkan produk yang dimiliki user, ubah fungsi ```show_main``` dari:
+```book_entries = Book.objects.all()```
+
+menjadi:
+```book_entries = Book.objects.filter(user=request.user)```
 
 
 # Tugas 3: Implementasi Form dan Data Delivery pada Django
