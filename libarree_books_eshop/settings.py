@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f$-37yt7i5jd-im(qf3w6quphms_028kdtgs5)46#@784y7=v1
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "nayla-farah-librarreebooks.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "nayla-farah-librarreebooks.pbp.cs.ui.ac.id", "nayla-farah-librarree.pbp.cs.ui.ac.id"]
 
 # Application definition
 
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     # main application
     'main',
 ]
