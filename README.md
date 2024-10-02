@@ -1,6 +1,139 @@
 ### Nayla Farah Nida
 ### 2306213426
 
+# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+
+## Urutan prioritas CSS selector:
+
+1. Inline style = 1000
+
+``` 
+<h1 style="color: purple;">Judul</h1>
+```
+
+3. ID selector = 100
+
+```
+#header {
+  background-color: yellow;
+}
+```
+
+5. Class, pseudo-classes, attribute selector = 10
+
+```
+.highlight {
+  color: green;
+}
+
+a:hover {
+  color: red;
+}
+
+input[type="text"] {
+  border: 1px solid black;
+}
+```
+7. Elements and pseudo-elements selector = 1
+
+```
+body {
+  color: blue;
+}
+```
+
+## Pentingnya responsive design dan contoh aplikasinya:
+
+Responsive design adalah teknik merancang website, dimana website tersebut secara otomatis dapat menyesuaikan skala konten dan elemennya dengan ukuran layar yang digunakan user untuk membuka website, sehingga struktur dan tampilan website tetap rapih dan enak dilihat.
+
+Mengapa responsive design penting?
+Tujuan utama dari responsive design adalah untuk menghindari membuat ulang design website untuk setiap perangkat. Dengan responsive design, kita dapat meningkatkan user experience, meningkatkan peringkat dalam SEO (search engine operation), dan yang paling penting menghemat biaya dan Waktu pengembangan.
+
+Contoh aplikasi yang sudah menerapkan responsive design:
+Youtube,Google, X, 
+Contoh aplikasi yang belum menerapkan responsive design:
+MY APP LMAO
+
+## Perbedaan antara margin, border, dan padding:
+
+![css-box-model](https://github.com/user-attachments/assets/60a691ed-a593-4fa9-9c5b-8a9fd24a55b5)
+
+Content - dapat berupa teks atau foto
+Padding - area kosong (transparan) disekitar content
+Border - Batasan yang mengelilingi padding dan content
+Margin - area kosong (transparan) diluar border
+
+```
+div {
+  /* width | style | color */
+  border: 15px solid green;
+
+  /* top | right | bottom | left */
+  padding: 25px 50px 75px 100px;
+
+  /* top | right | bottom | left */
+  margin: 25px 50px 75px 100px;
+}
+```
+
+## Flexbox vs Grid:
+
+![grid_flex](https://github.com/user-attachments/assets/d3377422-e159-40cf-9c2f-40afb9abd8fc)
+
+*Flexbox*:
+Sistem layout satu dimensi untuk mengatur elemen dalam baris atau kolom
+
+Properti flexbox:
+1. display: flex;
+2. flex-direction: (```row``` atau ```column```);
+3. justify-content (```flex-start```, ```flex-end```, ```center```, ```space-betweem```, ```space-around```)
+4. align-items (```flex-start```, ```flex-end```, ```center```,```baseline```,```stretch```)
+5. flex-wrap (```nowrap```, ```wrap```, ```wrap-reverse```)
+
+```
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+```
+
+*Grid*:
+Merupakan layout dua dimensi dengan baris dan kolom, dimana elemen diposisikan seperti tabel. 
+
+Properti grid:
+1. display: grid;
+2. grid-template-columns atau grid-template-rows
+3. gap
+4. grid-column grid-row
+5. justify-items dan align-items
+6. grid-auto-rows dan grid-auto-columns
+
+```
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+}
+```
+
+Kapan harus menggunakan flexbox atau grid:
+*Flexbox* : Ketika tata letak bersifat linear, seperti navbar, daftar produk, atau untuk mengatur elemen lain dalam satu baris atau kolom.
+*Grid* : Ketika tata letak bersifat dua dimensi, seperti halaman yang penuh dengan beberapa kolom dan baris.
+
+Keduanya sering digunakan bersama, grid untuk membuat struktur layout utama, dan flexbox untuk mengatur detail dalam setiap elemen grid.
+
+## Cara implementasi tugas:
+
+- Framework yang saya gunakan untuk kustmoisasi halaman login, register, tambah produk, dan main adalah Tailwind.
+
+- Mengatur static files di settings.py, kemudian membuat directory static untuk menyimpan CSS dam image.
+
+- Buat navbar menggunakan Tailwind CSS yang secara otomatis berubah bentuk (collapsed) pada ukuran layar yang lebih kecil.
+
+- Gunakan grid layout dan flexbox untuk memastikan produk-produk dalam card bisa diatur ulang sesuai ukuran layar. Atur penggunaan gambar, padding, dan margin agar proporsional di berbagai resolusi layar.
+
 # tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
 
 ## Perbedaan antara HttpResponseRedirect dan redirect
@@ -33,7 +166,9 @@ for product in user_products:
 ## Perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? dan bagaimana Django mengimplementasikan kedua konsep tersebut:
 
 ```authentication```adalah proses memverifikasi identitas user, sedangkan ```authorization``` adalah proses memverifikasi apa saja yang dapat diakses oleh user tersebut.
+
 Contoh authentication: Saat login,  user memasukkan username dan password. Kemudian sistem membandingkan informasi yang diberikan user dengan data yang tersimpan di database.
+
 Contoh authorization: Setelah login, Django menentukan apa saja yang bisa dilakukan oleh user tersebut. Misal, hanya admin yang dapat menambah atau menghapus produk.
 
 ## Cara Django mengingat pengguna yang telah login, kegunaan lain dari cookies, dan apakah semua cookies aman digunakan?:
