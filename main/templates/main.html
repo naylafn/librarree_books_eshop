@@ -1,234 +1,297 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
 
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        font-family: "Libre Baskerville", "Arial Narrow", Arial, sans-serif;
-        font-size: 1rem;
-        color: #16c79e;
-      }
-
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        height: 100%; /* Make sure body takes full height */
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      main {
-        flex: 1; /* Allow the main content to take up remaining space */
-        padding: 20px; /* Optional padding for main content */
-      }
-
-      body,
-      main {
-        margin: 0;
-        padding: 0;
-        background-image: linear-gradient(
-          0deg,
-          hsl(166deg 80% 43%) 0%,
-          hsl(164deg 58% 53%) 20%,
-          hsl(162deg 57% 59%) 29%,
-          hsl(161deg 56% 64%) 36%,
-          hsl(160deg 55% 68%) 42%,
-          hsl(160deg 55% 73%) 47%,
-          hsl(159deg 55% 77%) 52%,
-          hsl(158deg 55% 81%) 57%,
-          hsl(158deg 55% 85%) 62%,
-          hsl(158deg 55% 89%) 68%,
-          hsl(157deg 55% 92%) 74%,
-          hsl(157deg 55% 96%) 83%,
-          hsl(0deg 0% 100%) 100%
-        );
-      }
-
-      header {
-        display: grid;
-        grid-template-columns: auto auto;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #ffffff; /* Light background color */
-        border-bottom: 2px solid #f4f4f4;
-        padding-right: 25px;
-      }
-
-      .navbar,
-      .logo {
-        background-color: #ffffff; /* Light background color */
-        color: #16c79e !important;
-        padding: 0;
-        margin: 0;
-      }
-
-      main {
-        background-color: #ffffff;
-        padding: 30px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-      }
-
-      .card-img-top {
-        width: 100%;
-        height: 13.3rem;
-      }
-
-      .card-title {
-        color: black;
-        font-size: 0.85rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .card-author {
-        color: #a8a8a8;
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .card-text {
-        color: #16c79e;
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .btn-custom {
-        background-color: #16c79e;
-        border-color: #16c79e;
-        font-size: 0.9rem;
-      }
-
-      .btn-custom:hover {
-        background-color: #19ab89;
-        border-color: #19ab89;
-      }
-
-      footer > p {
-        color: white;
-        margin-top: auto;
-        text-align: center;
-      }
-    </style>
     <title>Librarree</title>
   </head>
 
-  <body>
+  <body
+    style="
+      background-image: linear-gradient(
+        180deg,
+        hsl(202deg 56% 30%) 0%,
+        hsl(203deg 85% 25%) 12%,
+        hsl(206deg 100% 23%) 24%,
+        hsl(211deg 100% 23%) 35%,
+        hsl(219deg 87% 23%) 47%,
+        hsl(229deg 68% 24%) 58%,
+        hsl(233deg 64% 22%) 69%,
+        hsl(237deg 61% 21%) 79%,
+        hsl(242deg 62% 18%) 90%,
+        hsl(247deg 69% 15%) 100%
+      );
+    "
+  >
     <header>
-      <div class="navbar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
-              <lord-icon
-                src="https://cdn.lordicon.com/wmwqvixz.json"
-                trigger="hover"
-                state="hover-home-1"
-                colors="primary:#16c79e"
-                style="width: 30px; height: 30px"
+      <nav
+        class="bg-transparent backdrop-blur-lg fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+      >
+        <div
+          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        >
+          <ul class="nav flex space-x-6 ml-3">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'main:show_main' %}"
               >
-              </lord-icon
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"
-              ><lord-icon
-                src="https://cdn.lordicon.com/ulnswmkk.json"
-                trigger="hover"
-                colors="primary:#16c79e"
-                style="width: 30px; height: 30px"
-              >
-              </lord-icon
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"
-              ><lord-icon
-                src="https://cdn.lordicon.com/pbrgppbb.json"
-                trigger="hover"
-                colors="primary:#16c79e"
-                style="width: 30px; height: 30px"
-              >
-              </lord-icon
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'main:create_book_entry' %}" class="nav-link"
-              ><script src="https://cdn.lordicon.com/lordicon.js"></script>
-              <lord-icon
-                src="https://cdn.lordicon.com/jgnvfzqg.json"
-                trigger="hover"
-                colors="primary:#16c79e"
-                style="width: 30px; height: 30px"
-              >
-              </lord-icon
-            ></a>
-          </li>
-        </ul>
-      </div>
-      <div class="logo">
-        <h4 style="font-size: 30px">{{ application }}</h4>
-      </div>
-    </header>
+                <lord-icon
+                  src="https://cdn.lordicon.com/wmwqvixz.json"
+                  trigger="hover"
+                  state="hover-home-1"
+                  colors="primary:#00b4d8  "
+                  style="width: 30px; height: 30px"
+                >
+                </lord-icon
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><lord-icon
+                  src="https://cdn.lordicon.com/ulnswmkk.json"
+                  trigger="hover"
+                  colors="primary:#00b4d8"
+                  style="width: 30px; height: 30px"
+                >
+                </lord-icon
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><lord-icon
+                  src="https://cdn.lordicon.com/pbrgppbb.json"
+                  trigger="hover"
+                  colors="primary:#00b4d8  "
+                  style="width: 30px; height: 30px"
+                >
+                </lord-icon
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'main:create_book_entry' %}" class="nav-link"
+                ><script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                  src="https://cdn.lordicon.com/jgnvfzqg.json"
+                  trigger="hover"
+                  colors="primary:#00b4d8"
+                  style="width: 30px; height: 30px"
+                >
+                </lord-icon
+              ></a>
+            </li>
+          </ul>
 
-    <main>
-      {% if not book_entries %}
-      <h3>No books available yet :)</h3>
-      {% else %} {% for book_entry in book_entries %}
+          <a
+            href="{% url 'main:show_main' %}"
+            class="flex items-center space-x-3 rtl:space-x-reverse mr-20"
+          >
+            <span
+              class="self-center text-2xl text-[#00b4d8] font-['Old Standard'] font-semibold whitespace-nowrap"
+            >
+              Librarree
+            </span>
+          </a>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="card" style="width: 14rem">
-              <img
-                src="{{ book_entry.image.url }}"
-                class="card-img-top"
-                alt="{{ book_entry.name }}"
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{book_entry.name}}</h5>
-                <p class="card-author">{{book_entry.author}}</p>
-                <p class="card-text">Rp{{book_entry.price}}</p>
-                <a href="#" class="btn btn-primary btn-custom">Add to Cart</a>
-              </div>
+          <div class="relative group mr-6 flex">
+            <p class="text-[#00b4d8] mr-2 mt-2 font-bold">{{name}}</p>
+            <a
+              href="#
+            "
+            >
+              <lord-icon
+                src="https://cdn.lordicon.com/hrjifpbq.json"
+                trigger="hover"
+                colors="primary:#00b4d8"
+                style="width: 35px"
+              >
+              </lord-icon>
+            </a>
+
+            <!-- Hidden elements, visible on hover -->
+            <div
+              class="absolute hidden group-hover:block bg-black bg-opacity-80 p-3 rounded shadow-lg mt-8 right-0"
+            >
+              <a href="{% url 'main:logout' %}">
+                <button
+                  class="text-white w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0096c7] hover:bg-[#00b4d8]"
+                >
+                  Logout
+                </button>
+              </a>
+              <h5 class="text-white">Sesi terakhir login: {{ last_login }}</h5>
             </div>
           </div>
         </div>
+      </nav>
+    </header>
+
+    <div
+      class="min-h-screen flex items-center justify-center w-screen bg-[url('{% static 'image/bgif4.gif' %}')] bg-cover py-12 px-4 sm:px-6 lg:px-8"
+    >
+      <div class="p-10">
+        <h1 class="text-white font-['Oswald'] text-3xl">
+          “You will never be happy if you continue to search for what happiness
+          consists of. You will never live if you are looking for the meaning of
+          life.”<br />
+          <br />
+          <span> ― Albert Camus </span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="m-4 text-center">
+      {% if not book_entries %}
+      <h3 class="col-span-full text-white font-['Oswald'] font-bold text-3xl">
+        No books available yet :)
+      </h3>
+
+      <!-- Add a wrapper div to control the size and center alignment -->
+      <div class="flex justify-center mt-4">
+        <div
+          class="tenor-gif-embed"
+          data-postid="4486215913899514615"
+          data-share-method="host"
+          data-aspect-ratio="1"
+          data-width="30%"
+        >
+          <a
+            href="https://tenor.com/view/%E5%B0%8F%E7%8C%AB-gif-4486215913899514615"
+            >小猫 Sticker</a
+          >from
+          <a href="https://tenor.com/search/%E5%B0%8F%E7%8C%AB-stickers"
+            >小猫 Stickers</a
+          >
+        </div>
       </div>
 
+      <script
+        type="text/javascript"
+        async
+        src="https://tenor.com/embed.js"
+      ></script>
+    </div>
+
+    <main
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 m-6 pt-5 pb-5"
+    >
+      {% else %} {% for book_entry in book_entries %}
+      <div
+        class="w-full bg-black bg-opacity-50 backdrop-blur-lg border border-gray-200 rounded-lg shadow-lg"
+      >
+        <a href="#">
+          <img
+            class="w-full h-72 object-cover rounded-t-lg"
+            src="{{ book_entry.image.url }}"
+            alt="product image"
+          />
+        </a>
+        <div class="px-5 pb-5 pt-3">
+          <a href="#">
+            <h5
+              class="text-xl font-['Old Standard TT'] font-semibold tracking-tight text-white"
+            >
+              {{ book_entry.name }} <br />
+              <span class="text-l text-gray-400">{{ book_entry.author }}</span>
+            </h5>
+          </a>
+          <div class="flex items-center mt-2.5 mb-2">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <svg
+                class="w-4 h-4 text-yellow-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+              <svg
+                class="w-4 h-4 text-yellow-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+              <svg
+                class="w-4 h-4 text-yellow-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+              <svg
+                class="w-4 h-4 text-yellow-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+              <svg
+                class="w-4 h-4 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+            </div>
+            <span
+              class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3"
+              >5.0</span
+            >
+          </div>
+          <span class="text-2xl font-bold text-white">
+            Rp{{ book_entry.price }}
+          </span>
+          <div class="flex items-center mt-0 mb-5">
+            <div class="flex items-center space-x-1"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <a href="{% url 'main:delete_book' book_entry.pk %}">
+              <lord-icon
+                src="https://cdn.lordicon.com/skkahier.json"
+                trigger="hover"
+                colors="primary:#00b4d8"
+                style="width: 30px"
+              >
+              </lord-icon>
+            </a>
+            <a href="{% url 'main:edit_book' book_entry.pk %}">
+              <lord-icon
+                src="https://cdn.lordicon.com/omiqopzf.json"
+                trigger="morph"
+                state="morph-book"
+                colors="primary:#00b4d8"
+                style="width: 30px"
+              >
+              </lord-icon>
+            </a>
+          </div>
+        </div>
+      </div>
       {% endfor %} {% endif %}
-      <a href="{% url 'main:logout' %}">
-        <button>Logout</button>
-      </a>
-      <h5>Sesi terakhir login: {{ last_login }}</h5>
     </main>
-    <footer>
-      <a href="https://lordicon.com/">Icons by Lordicon.com</a>
-      <p>{{ name }}</p>
-      <p>{{ class }}</p>
-    </footer>
   </body>
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </html>

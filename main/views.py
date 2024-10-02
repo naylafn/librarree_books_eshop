@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect   # Tambahkan import redirect di baris ini
 from main.forms import BookEntryForm
 from main.models import Book
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 
@@ -11,7 +11,6 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 
 import datetime
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 # Create your views here.
@@ -28,7 +27,7 @@ def show_main(request):
     return render(request, "main.html", context)
 
 def create_book_entry(request):
-    form = BookEntryForm(request.POST or None)
+    form = BookEntryForm(request.POST, request.FILES)
 
     if form.is_valid() and request.method == "POST":
         book_entry = form.save(commit=False)
@@ -88,3 +87,22 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_book(request, id):
+    book = Book.objects.get(pk = id)
+    form = BookEntryForm(request.POST or None, instance=book)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_book.html", context)
+
+def delete_book(request, id):
+    # Get mood berdasarkan id
+    book = Book.objects.get(pk = id)
+    # Hapus mood
+    book.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
