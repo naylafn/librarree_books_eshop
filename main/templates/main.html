@@ -143,41 +143,35 @@
       </div>
     </div>
 
-    <div class="m-4 text-center">
+    <main
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 m-6 pt-5 pb-5"
+    >
       {% if not book_entries %}
-      <h3 class="col-span-full text-white font-['Oswald'] font-bold text-3xl">
+      <h3
+        class="col-span-full text-center text-white font-['Oswald'] font-bold text-3xl"
+      >
         No books available yet :)
       </h3>
-
-      <!-- Add a wrapper div to control the size and center alignment -->
-      <div class="flex justify-center mt-4">
-        <div
-          class="tenor-gif-embed"
-          data-postid="4486215913899514615"
-          data-share-method="host"
-          data-aspect-ratio="1"
-          data-width="30%"
+      <div
+        class="tenor-gif-embed"
+        data-postid="4486215913899514615"
+        data-share-method="host"
+        data-aspect-ratio="1"
+        data-width="100%"
+      >
+        <a
+          href="https://tenor.com/view/%E5%B0%8F%E7%8C%AB-gif-4486215913899514615"
+          >小猫 Sticker</a
+        >from
+        <a href="https://tenor.com/search/%E5%B0%8F%E7%8C%AB-stickers"
+          >小猫 Stickers</a
         >
-          <a
-            href="https://tenor.com/view/%E5%B0%8F%E7%8C%AB-gif-4486215913899514615"
-            >小猫 Sticker</a
-          >from
-          <a href="https://tenor.com/search/%E5%B0%8F%E7%8C%AB-stickers"
-            >小猫 Stickers</a
-          >
-        </div>
       </div>
-
       <script
         type="text/javascript"
         async
         src="https://tenor.com/embed.js"
       ></script>
-    </div>
-
-    <main
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 m-6 pt-5 pb-5"
-    >
       {% else %} {% for book_entry in book_entries %}
       <div
         class="w-full bg-black bg-opacity-50 backdrop-blur-lg border border-gray-200 rounded-lg shadow-lg"
