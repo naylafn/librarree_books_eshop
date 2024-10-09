@@ -1,9 +1,7 @@
 ### Nayla Farah Nida
 ### 2306213426
 
-My Project: 
-
-(Librarree Books)[http://nayla-farah-librarreebooks.pbp.cs.ui.ac.id/]
+My Project: [Librarree Books](http://nayla-farah-librarreebooks.pbp.cs.ui.ac.id/)
 
 <details>
   <summary>Tugas 6: JavaScript dan AJAX</summary>
