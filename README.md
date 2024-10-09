@@ -1,6 +1,4 @@
-### Nayla Farah Nida
-### 2306213426
-
+### Nayla Farah Nida - 2306213426
 My Project: [Librarree Books](http://nayla-farah-librarreebooks.pbp.cs.ui.ac.id/)
 
 <details>
