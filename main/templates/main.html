@@ -324,7 +324,7 @@
             <div class="flex items-center space-x-1"></div>
           </div>
           <div class="flex items-center justify-between">
-            <a href="/edit-book/${item.pk}">
+            <a href="/delete/${item.pk}">
               <lord-icon
                 src="https://cdn.lordicon.com/skkahier.json"
                 trigger="hover"
@@ -333,7 +333,7 @@
               >
               </lord-icon>
             </a>
-            <a href="/delete/${item.pk}">
+            <a href="/edit-book/${item.pk}">
               <lord-icon
                 src="https://cdn.lordicon.com/omiqopzf.json"
                 trigger="morph"
@@ -391,7 +391,16 @@
       fetch("{% url 'main:add_book_entry_ajax' %}", {
         method: "POST",
         body: new FormData(document.querySelector("#bookEntryForm")),
-      }).then((response) => refreshBookEntries());
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            // Display error message (e.g., on the form)
+            alert(data.error);
+          }
+        })
+        .catch((error) => console.error("Error:", error))
+        .then((response) => refreshBookEntries());
 
       document.getElementById("bookEntryForm").reset();
       document.querySelector("[data-modal-toggle='crudModal']").click();

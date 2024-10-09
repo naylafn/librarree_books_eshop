@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect   # Tambahkan import redirect di baris ini
 from main.forms import BookEntryForm
 from main.models import Book
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 
@@ -121,6 +121,12 @@ def add_book_entry_ajax(request):
     price = request.POST.get("price")
     image = request.POST.get("image")
     user = request.user
+
+     # Validate input - check if the sanitized input is not empty
+    if not name.strip():
+        return JsonResponse({"error": "Name cannot be empty or invalid"}, status=400)
+    if not author.strip():
+        return JsonResponse({"error": "Author cannot be empty or invalid"}, status=400)
 
     new_book = Book(
         name=name, author=author,
