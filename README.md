@@ -3,7 +3,7 @@
 My Project: (Librarree Books)[http://nayla-farah-librarreebooks.pbp.cs.ui.ac.id/]
 
 <details>
-  <summary># Tugas 6: JavaScript dan AJAX</summary>
+  <summary>Tugas 6: JavaScript dan AJAX</summary>
 
 1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
    
@@ -53,7 +53,7 @@ Data yang dikirimkan dari frontend ke backend bisa dimanipulasi oleh pengguna at
 </details>
 
 <details>
-<summary>#Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS</summary>
+<summary>Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS</summary>
 
 ## Urutan prioritas CSS selector:
 
@@ -189,7 +189,7 @@ Keduanya sering digunakan bersama, grid untuk membuat struktur layout utama, dan
 </details>
 
 <details>
-<summary># tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django</summary>
+<summary>Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django</summary>
 
 ## Perbedaan antara HttpResponseRedirect dan redirect
 
@@ -249,7 +249,7 @@ menjadi:
 </details>
 
 <details>
-<summary># Tugas 3: Implementasi Form dan Data Delivery pada Django</summary>
+<summary>Tugas 3: Implementasi Form dan Data Delivery pada Django</summary>
 
 ## Mengapa implementasi data delivery dalam platform diperlukan:
 
@@ -300,7 +300,7 @@ Tanpa csrf_token, aplikasi Django akan rentan terhadap serangan CSRF. Penyerang 
 
 </details>
 <details>
-<summary># Tugas 2: Implementasi MVT pada Django</summary>
+<summary>Tugas 2: Implementasi MVT pada Django</summary>
 
 ## Cara implementasi tugas:
 
