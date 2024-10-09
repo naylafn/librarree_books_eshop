@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Librarree</title>
+    {% block meta %}
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+    {% endblock meta %}
   </head>
 
   <body
@@ -25,109 +28,7 @@
       );
     "
   >
-    <header>
-      <nav
-        class="bg-transparent backdrop-blur-lg fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
-      >
-        <div
-          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-        >
-          <ul class="nav flex space-x-6 ml-3">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="{% url 'main:show_main' %}"
-              >
-                <lord-icon
-                  src="https://cdn.lordicon.com/wmwqvixz.json"
-                  trigger="hover"
-                  state="hover-home-1"
-                  colors="primary:#00b4d8  "
-                  style="width: 30px; height: 30px"
-                >
-                </lord-icon
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><lord-icon
-                  src="https://cdn.lordicon.com/ulnswmkk.json"
-                  trigger="hover"
-                  colors="primary:#00b4d8"
-                  style="width: 30px; height: 30px"
-                >
-                </lord-icon
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><lord-icon
-                  src="https://cdn.lordicon.com/pbrgppbb.json"
-                  trigger="hover"
-                  colors="primary:#00b4d8  "
-                  style="width: 30px; height: 30px"
-                >
-                </lord-icon
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'main:create_book_entry' %}" class="nav-link"
-                ><script src="https://cdn.lordicon.com/lordicon.js"></script>
-                <lord-icon
-                  src="https://cdn.lordicon.com/jgnvfzqg.json"
-                  trigger="hover"
-                  colors="primary:#00b4d8"
-                  style="width: 30px; height: 30px"
-                >
-                </lord-icon
-              ></a>
-            </li>
-          </ul>
-
-          <a
-            href="{% url 'main:show_main' %}"
-            class="flex items-center space-x-3 rtl:space-x-reverse mr-20"
-          >
-            <span
-              class="self-center text-2xl text-[#00b4d8] font-['Old Standard'] font-semibold whitespace-nowrap"
-            >
-              Librarree
-            </span>
-          </a>
-
-          <div class="relative group mr-6 flex">
-            <p class="text-[#00b4d8] mr-2 mt-2 font-bold">{{name}}</p>
-            <a
-              href="#
-            "
-            >
-              <lord-icon
-                src="https://cdn.lordicon.com/hrjifpbq.json"
-                trigger="hover"
-                colors="primary:#00b4d8"
-                style="width: 35px"
-              >
-              </lord-icon>
-            </a>
-
-            <!-- Hidden elements, visible on hover -->
-            <div
-              class="absolute hidden group-hover:block bg-black bg-opacity-80 p-3 rounded shadow-lg mt-8 right-0"
-            >
-              <a href="{% url 'main:logout' %}">
-                <button
-                  class="text-white w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0096c7] hover:bg-[#00b4d8]"
-                >
-                  Logout
-                </button>
-              </a>
-              <h5 class="text-white">Sesi terakhir login: {{ last_login }}</h5>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <header>{% include 'navbar.html' %}</header>
 
     <div
       class="min-h-screen flex items-center justify-center w-screen bg-[url('{% static 'image/bgif4.gif' %}')] bg-cover py-12 px-4 sm:px-6 lg:px-8"
@@ -143,11 +44,165 @@
       </div>
     </div>
 
-    <main
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 m-6 pt-5 pb-5"
-    >
-      {% if not book_entries %}
-      <h3
+    <main>
+      <button
+        data-modal-target="crudModal"
+        data-modal-toggle="crudModal"
+        class="btn bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+        onclick="showModal();"
+      >
+        Add New Book by AJAX
+      </button>
+      <div id="book_entry_cards"></div>
+      <div
+        id="crudModal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden fixed inset-0 z-50 w-full flex items-center justify-center bg-gray-800 bg-opacity-50 overflow-x-hidden overflow-y-auto transition-opacity duration-300 ease-out"
+      >
+        <div
+          id="crudModalContent"
+          class="relative bg-white rounded-lg shadow-lg w-5/6 sm:w-3/4 md:w-1/2 lg:w-1/3 mx-4 sm:mx-0 transform scale-95 opacity-0 transition-transform transition-opacity duration-300 ease-out"
+        >
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 border-b rounded-t">
+            <h3 class="text-xl font-semibold text-gray-900">Add a New Book</h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+              id="closeModalBtn"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="px-6 py-4 space-y-6 form-style">
+            <form id="bookEntryForm">
+              <div class="mb-4">
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Title
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="mt-1 block w-full border border-gray-300 rounded-md p-2 hover:border-indigo-700"
+                  placeholder="Enter book title"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="author"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Author
+                </label>
+                <input
+                  type="text"
+                  id="author"
+                  name="author"
+                  class="mt-1 block w-full resize-none border border-gray-300 rounded-md p-2 hover:border-indigo-700"
+                  placeholder="Enter Book Author"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="price"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Book price
+                </label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  min="1"
+                  class="mt-1 block w-full border border-gray-300 rounded-md p-2 hover:border-indigo-700"
+                  required
+                />
+              </div>
+
+              <!-- Image input field -->
+              <div class="mb-4">
+                <label
+                  for="image"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Upload book image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  class="mt-1 block w-full border border-gray-300 rounded-md p-2 hover:border-indigo-700"
+                />
+              </div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div
+            class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 p-6 border-t border-gray-200 rounded-b justify-center md:justify-end"
+          >
+            <button
+              type="button"
+              class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg"
+              id="cancelButton"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              id="submitBookEntry"
+              form="bookEntryForm"
+              class="bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script>
+    async function getBookEntries() {
+      return fetch("{% url 'main:show_json' %}").then((res) => res.json());
+    }
+
+    async function refreshBookEntries() {
+      document.getElementById("book_entry_cards").innerHTML = "";
+      document.getElementById("book_entry_cards").className = "";
+      const bookEntries = await getBookEntries();
+      const mediaUrl = "/media/";
+      let htmlString = "";
+      let classNameString = "";
+
+      if (bookEntries.length === 0) {
+        classNameString =
+          "flex flex-col items-center justify-center min-h-[24rem] p-6";
+        htmlString = `
+            <h3
         class="col-span-full text-center text-white font-['Oswald'] font-bold text-3xl"
       >
         No books available yet :)
@@ -167,19 +222,26 @@
           >小猫 Stickers</a
         >
       </div>
-      <script
-        type="text/javascript"
-        async
-        src="https://tenor.com/embed.js"
-      ></script>
-      {% else %} {% for book_entry in book_entries %}
-      <div
+        `;
+        const script = document.createElement("script");
+        script.src = "https://tenor.com/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+      } else {
+        classNameString =
+          "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 m-6 pt-5 pb-5";
+        bookEntries.forEach((item) => {
+          const imageUrl = mediaUrl + item.fields.image;
+          const name = DOMPurify.sanitize(item.fields.name);
+          const author = DOMPurify.sanitize(item.fields.author);
+          htmlString += `
+            <div
         class="w-full bg-black bg-opacity-50 backdrop-blur-lg border border-gray-200 rounded-lg shadow-lg"
       >
         <a href="#">
           <img
             class="w-full h-72 object-cover rounded-t-lg"
-            src="{{ book_entry.image.url }}"
+            src="${imageUrl}"
             alt="product image"
           />
         </a>
@@ -188,8 +250,8 @@
             <h5
               class="text-xl font-['Old Standard TT'] font-semibold tracking-tight text-white"
             >
-              {{ book_entry.name }} <br />
-              <span class="text-l text-gray-400">{{ book_entry.author }}</span>
+              ${name} <br />
+              <span class="text-l text-gray-400">${author}</span>
             </h5>
           </a>
           <div class="flex items-center mt-2.5 mb-2">
@@ -256,13 +318,13 @@
             >
           </div>
           <span class="text-2xl font-bold text-white">
-            Rp{{ book_entry.price }}
+            Rp${item.fields.price}
           </span>
           <div class="flex items-center mt-0 mb-5">
             <div class="flex items-center space-x-1"></div>
           </div>
           <div class="flex items-center justify-between">
-            <a href="{% url 'main:delete_book' book_entry.pk %}">
+            <a href="/edit-book/${item.pk}">
               <lord-icon
                 src="https://cdn.lordicon.com/skkahier.json"
                 trigger="hover"
@@ -271,7 +333,7 @@
               >
               </lord-icon>
             </a>
-            <a href="{% url 'main:edit_book' book_entry.pk %}">
+            <a href="/delete/${item.pk}">
               <lord-icon
                 src="https://cdn.lordicon.com/omiqopzf.json"
                 trigger="morph"
@@ -284,9 +346,63 @@
           </div>
         </div>
       </div>
-      {% endfor %} {% endif %}
-    </main>
-  </body>
-  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+            `;
+        });
+      }
+      document.getElementById("book_entry_cards").className = classNameString;
+      document.getElementById("book_entry_cards").innerHTML = htmlString;
+    }
+    refreshBookEntries();
+
+    const modal = document.getElementById("crudModal");
+    const modalContent = document.getElementById("crudModalContent");
+
+    function showModal() {
+      const modal = document.getElementById("crudModal");
+      const modalContent = document.getElementById("crudModalContent");
+
+      modal.classList.remove("hidden");
+      setTimeout(() => {
+        modalContent.classList.remove("opacity-0", "scale-95");
+        modalContent.classList.add("opacity-100", "scale-100");
+      }, 50);
+    }
+
+    function hideModal() {
+      const modal = document.getElementById("crudModal");
+      const modalContent = document.getElementById("crudModalContent");
+
+      modalContent.classList.remove("opacity-100", "scale-100");
+      modalContent.classList.add("opacity-0", "scale-95");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+      }, 150);
+    }
+
+    document
+      .getElementById("cancelButton")
+      .addEventListener("click", hideModal);
+    document
+      .getElementById("closeModalBtn")
+      .addEventListener("click", hideModal);
+
+    function addBookEntry() {
+      fetch("{% url 'main:add_book_entry_ajax' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector("#bookEntryForm")),
+      }).then((response) => refreshBookEntries());
+
+      document.getElementById("bookEntryForm").reset();
+      document.querySelector("[data-modal-toggle='crudModal']").click();
+
+      return false;
+    }
+
+    document.getElementById("bookEntryForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      addBookEntry();
+    });
+  </script>
 </html>
 {% endblock content %}

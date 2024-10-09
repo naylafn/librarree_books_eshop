@@ -1,0 +1,101 @@
+<nav
+  class="bg-transparent backdrop-blur-lg fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <ul class="nav flex space-x-6 ml-3">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          aria-current="page"
+          href="{% url 'main:show_main' %}"
+        >
+          <lord-icon
+            src="https://cdn.lordicon.com/wmwqvixz.json"
+            trigger="hover"
+            state="hover-home-1"
+            colors="primary:#00b4d8  "
+            style="width: 30px; height: 30px"
+          >
+          </lord-icon
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><lord-icon
+            src="https://cdn.lordicon.com/ulnswmkk.json"
+            trigger="hover"
+            colors="primary:#00b4d8"
+            style="width: 30px; height: 30px"
+          >
+          </lord-icon
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          ><lord-icon
+            src="https://cdn.lordicon.com/pbrgppbb.json"
+            trigger="hover"
+            colors="primary:#00b4d8  "
+            style="width: 30px; height: 30px"
+          >
+          </lord-icon
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'main:create_book_entry' %}" class="nav-link"
+          ><script src="https://cdn.lordicon.com/lordicon.js"></script>
+          <lord-icon
+            src="https://cdn.lordicon.com/jgnvfzqg.json"
+            trigger="hover"
+            colors="primary:#00b4d8"
+            style="width: 30px; height: 30px"
+          >
+          </lord-icon
+        ></a>
+      </li>
+    </ul>
+
+    <a
+      href="{% url 'main:show_main' %}"
+      class="flex items-center space-x-3 rtl:space-x-reverse mr-20"
+    >
+      <span
+        class="self-center text-2xl text-[#00b4d8] font-['Old Standard'] font-semibold whitespace-nowrap"
+      >
+        Librarree
+      </span>
+    </a>
+
+    <div class="relative group mr-6 flex">
+      <p class="text-[#00b4d8] mr-2 mt-2 font-bold">{{name}}</p>
+      <a
+        href="#
+            "
+      >
+        <lord-icon
+          src="https://cdn.lordicon.com/hrjifpbq.json"
+          trigger="hover"
+          colors="primary:#00b4d8"
+          style="width: 35px"
+        >
+        </lord-icon>
+      </a>
+
+      <!-- Hidden elements, visible on hover -->
+      <div
+        class="absolute hidden group-hover:block bg-black bg-opacity-80 p-3 rounded shadow-lg mt-8 right-0"
+      >
+        <a href="{% url 'main:logout' %}">
+          <button
+            class="text-white w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0096c7] hover:bg-[#00b4d8]"
+          >
+            Logout
+          </button>
+        </a>
+        <h5 class="text-white">Sesi terakhir login: {{ last_login }}</h5>
+      </div>
+    </div>
+  </div>
+</nav>

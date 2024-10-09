@@ -96,11 +96,10 @@
             </span>
 
             <input
-              type="{{ field.field.widget.attrs.type }}"
+              type="text"
               name="{{ field.name }}"
               id="{{ field.id_for_label }}"
               class="class= rounded-none rounded-e-lg inline-flex items-center px-3 bg-transparent bg-opacity-50 border border-gray-300 rounded-md text-white focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5"
-              value="{{ field.value|default:'' }}"
               placeholder="{{ field.label }}"
               required
             />
