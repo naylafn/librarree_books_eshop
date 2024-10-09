@@ -1,7 +1,58 @@
-### Nayla Farah Nida
-### 2306213426
+### Nayla Farah Nida - 2306213426
+My Project: [Librarree Books](http://nayla-farah-librarreebooks.pbp.cs.ui.ac.id/)
 
-# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+<details>
+  <summary>Tugas 6: JavaScript dan AJAX</summary>
+
+1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+   
+- JavaScript selalu dieksekusi di lingkungan klien sehingga mengurangi beban server dan mempercepat proses eksekusi.
+  
+- Kompatibel untuk semua browser.
+  
+- Membuat website yang interaktif dan responsif.
+  
+- JavaScript fleksibel untuk front-end maupun back-end dengan adanya Node.js
+  
+- Dapat digunakan pada berbagai framework dan library.
+  
+2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+   
+Fungsi dari await adalah menunggu hingga fetch() selesai, baik hasilnya berhasil mendapat data atau gagal. 
+
+Setelah promise terpenuhi, response bisa langsung digunakan di baris kode berikutnya.
+
+Jika tidak menggunakan await, fetch akan berjalan secara asynchronous dan langsung mengembalikan promise tanpa menunggu sampai selesai melakukan permintaan, sehingga response dari server mungkin belum tersedia saat kode berikutnya dieksekusi.
+
+3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+
+@csrf_exempt digunakan untuk mengecualikan pengecekan CSRF pada view tertentu, sehingga memungkinkan AJAX POST tanpa token CSRF. Kita sudah pastikan bahwa permintaan POST berasal dari source yang terpecaya dan API atau endpoint khusus tidak mengubah data penting, oleh karena itu decorartor ini digunakan karena penggunaan CSRF dianggap tidak perlu.
+
+*Kenapa perlu menggunakan @crsf_exempt?*
+
+- Penggunaan @csrf_exempt memungkinkan permintaan AJAX POST dilakukan tanpa perlu mengirimkan token CSRF, sehingga memudahkan pengembangan API.
+  
+- Tanpa @csrf_exempt, permintaan POST tanpa token CSRF akan menghasilkan 403 Forbidden dari Django, karena Django tidak menerima token valid dari permintaan tersebut.
+  
+- Dengan @csrf_exempt, kita menghindari kompleksitas pada integrasi dengan front-end, dengan melewatkan langkah tambahan untuk menangani token CSRF secara manual, terutama jika view tersebut tidak mengubah data penting atau sensitif.
+
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+
+Data yang dikirimkan dari frontend ke backend bisa dimanipulasi oleh pengguna atau pihak ketiga sebelum sampai ke server. Bahkan jika kita memiliki validasi di frontend, seorang pengguna bisa mengabaikan atau menghapus validasi tersebut (misalnya, menggunakan developer tools atau mengirim permintaan langsung ke server melalui API tanpa melibatkan UI). Oleh karena itu, pembersihan di backend memberikan lapisan keamanan tambahan yang tidak bisa dilewati.
+
+5. Cara implementasi tugas:
+
+- Membuat fungsi ```add_book_entry_ajax``` di ```views.py``` yang mengembalikan response JSON untuk data.
+- Membuat fungsi untuk refresh produk.
+- Membuat fungsi untuk mengirim AJAX ```GET``` request dengan JavaScript untuk fetch data.
+- Menambahkan tombol di ```main.html``` sebagai trigger untuk show modal.
+- Membuat fungsi untuk show modal dan hide modal.
+- Membuat fungsi untuk handle submission form dan mengirim ```POST``` request lewat AJAX, kemudian refresh display produk tanpa harus refresh satu page.
+  
+</details>
+
+<details>
+<summary>Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS</summary>
 
 ## Urutan prioritas CSS selector:
 
@@ -134,7 +185,10 @@ Keduanya sering digunakan bersama, grid untuk membuat struktur layout utama, dan
 
 - Gunakan grid layout dan flexbox untuk memastikan produk-produk dalam card bisa diatur ulang sesuai ukuran layar. Atur penggunaan gambar, padding, dan margin agar proporsional di berbagai resolusi layar.
 
-# tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
+</details>
+
+<details>
+<summary>Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django</summary>
 
 ## Perbedaan antara HttpResponseRedirect dan redirect
 
@@ -191,9 +245,10 @@ Supaya main page hanya menampilkan produk yang dimiliki user, ubah fungsi ```sho
 
 menjadi:
 ```book_entries = Book.objects.filter(user=request.user)```
+</details>
 
-
-# Tugas 3: Implementasi Form dan Data Delivery pada Django
+<details>
+<summary>Tugas 3: Implementasi Form dan Data Delivery pada Django</summary>
 
 ## Mengapa implementasi data delivery dalam platform diperlukan:
 
@@ -242,8 +297,9 @@ Tanpa csrf_token, aplikasi Django akan rentan terhadap serangan CSRF. Penyerang 
 **XML by ID**
 ![Screenshot 2024-09-18 075040](https://github.com/user-attachments/assets/0f879e15-97ba-481d-9a02-aad7af575891)
 
-
-# Tugas 2: Implementasi MVT pada Django
+</details>
+<details>
+<summary>Tugas 2: Implementasi MVT pada Django</summary>
 
 ## Cara implementasi tugas:
 
@@ -283,4 +339,4 @@ Selain karena menggunakan Bahasa python yang sudah pernah dipelajari dan kita su
 ## Mengapa model pada Django disebut sebagai ORM?
 
 Disebut object-relational-mapping (ORM) karena model tersebut merepresentasikan objek dari data yang disimpan dalam basis data relational. ORM memungkinkan untuk berinteraksi dengan database menggunakan objek python tanpa harus menulis kode SQL secara manual.
-
+</details>
